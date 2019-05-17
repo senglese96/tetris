@@ -1,0 +1,24 @@
+{
+  "name": "tetris",
+  "version": "1.0.0",
+  "description": "* Project Title * Background and Overview     * Motivation for project     * High level overview * Functionality and MVP Features     * Choose carefully     * Be especially detailed * Architecture and Technologies     * Technology 1         * Description         * Justification     * Technology 2         * Description         * Justification     ... Implementation Timeline     * Most important category     * Daily breakdown     * Aim to be done by Friday",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senglese96/tetris.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/senglese96/tetris/issues"
+  },
+  "homepage": "https://github.com/senglese96/tetris#readme",
+  "dependencies": {
+    "keymaster": "^1.6.2",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  }
+}
