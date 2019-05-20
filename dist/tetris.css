@@ -35,6 +35,8 @@
     align-items: center;
     justify-content: space-around;
     font-size: 30px;
+    border-radius: 5px;
+
 }
 
 #start-button{
@@ -124,6 +126,7 @@ li{
     align-items: center;
     justify-content: space-around;
     font-size: 30px;
+    border-radius: 5px;
 }
 
 #restart-button{
