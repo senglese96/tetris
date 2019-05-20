@@ -23,6 +23,15 @@ class Grid{
         this.updatePiece(tetrimino)
     }
 
+    blockOccupied(pos){
+        if (this.board[pos[0]] === undefined ||
+            this.board[pos[0]][pos[1]] === undefined ||
+            this.board[pos[0]][pos[1]] !== null){
+            return true
+        }
+        return false
+    }
+
     occupied(pos, tetrimino) {
         if (this.board[pos[0]] === undefined ||
             this.board[pos[0]][pos[1]] === undefined ||

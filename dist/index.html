@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="main.js"></script>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="tetris.css">
     <title>Tetris</title>
 </head>
 <body>
-    <h1>Tetris</h1>
-    <canvas id="game-canvas" width="400px" height="800px" ></canvas>
+    <div class='game-container'>
+        <div id="start-modal-background">
+            <div class='start-modal-content'>
+                <span>Welcome to Tetris!</span>
+                <div id='start-button'>Start Playing!</div>
+            </div>
+        </div>
+        <canvas id="game-canvas" width="400px" height="800px" ></canvas>
+        <canvas id="hold-canvas" width="200px" height="160px"></canvas>
+        <canvas id='next-canvas' width="200px" height="400px"></canvas>
+        <canvas id='score-canvas' width='200px' height='280px'></canvas>
+    </div>
 </body>
 </html>

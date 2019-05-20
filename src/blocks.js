@@ -48,12 +48,6 @@ export class Tetrimino{
         })
     }
 
-    erase(ctx) {
-        this.blocks.forEach(block => {
-            block.eraseBlock(ctx);
-        })
-    }
-
     rotate(grid, dir) {
         let moves = []
         let pivot = this.blocks[0].pos
@@ -87,31 +81,36 @@ export class Tetrimino{
 export class I extends Tetrimino{
     constructor(initial){
         super(initial, [[0, 0], [0, -1], [0, 1], [0, 2]], 'lightblue');
+        this.pattern = [[0, 0], [0, -1], [0, 1], [0, 2]]
     }
 }
 
 export class T extends Tetrimino{
     constructor(initial){
         super(initial, [[0, 0], [0, -1], [-1, 0], [0, 1]], 'purple')
+        this.pattern = [[0, 0], [0, -1], [-1, 0], [0, 1]]
     }
 }
 
 export class L extends Tetrimino{
     constructor(initial) {
-        super(initial, [[0, 0], [0, -1], [0, 1], [-1, 1]], 'blue')
+        super(initial, [[0, 0], [0, -1], [0, 1], [-1, 1]], 'orange')
+        this.pattern = [[0, 0], [0, -1], [0, 1], [-1, 1]]
     }
 
 }
 
 export class J extends Tetrimino{
     constructor(initial) {
-        super(initial, [[0, 0], [0, -1], [0, 1], [-1, -1]], 'orange')
+        super(initial, [[0, 0], [0, -1], [0, 1], [-1, -1]], 'blue')
+        this.pattern = [[0, 0], [0, -1], [0, 1], [-1, -1]]
     }
 }
 
 export class O extends Tetrimino{
     constructor(initial) {
         super(initial, [[0, 0], [0, 1], [-1, 0], [-1, 1]], 'yellow')
+        this.pattern = [[0, 0], [0, 1], [-1, 0], [-1, 1]]
     }
 
     rotate(grid, dir){
@@ -121,11 +120,13 @@ export class O extends Tetrimino{
 export class S extends Tetrimino{
     constructor(initial) {
         super(initial, [[0, 0], [0, -1], [-1, 0], [-1, 1]], 'green')
+        this.pattern = [[0, 0], [0, -1], [-1, 0], [-1, 1]]
     }
 }
 
 export class Z extends Tetrimino{
     constructor(initial) {
         super(initial, [[0, 0], [0, 1], [-1, -1], [-1, 0]], 'red')
+        this.pattern = [[0, 0], [0, 1], [-1, -1], [-1, 0]]
     }
 }

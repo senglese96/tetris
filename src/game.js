@@ -8,10 +8,15 @@ class Game{
         this.currentBag = this.randomBag()
         this.current = this.currentBag.shift()
         this.next = this.currentBag.splice(0, 3)
-        this.gravity = 500;
         this.score = 0;
         this.lines = 0
         this.gravInterval
+        this.gravCurve = [750, 500, 250, 150, 100, 80, 65, 50, 40]
+        this.gravTable = [25, 50, 75, 100, 150, 200, 250, 300]
+        this.level = 1
+        this.gravity = this.gravCurve.shift()
+        this.playing = false
+        this.hold = null
     }
 
     updateGravity(gravity){
@@ -32,6 +37,39 @@ class Game{
         }else{
             this.grid.move(this.current, [1, 0])
         }
+        return isOccupied
+    }
+
+    fastDrop(){
+        while(!this.drop()){
+        }
+    }
+
+    holdPiece(){
+        if(!this.hasHeld){
+            this.current.blocks.forEach(block => {
+                this.grid.board[block.pos[0]][block.pos[1]] = null
+            })
+            this.hasHeld = true
+            if(this.hold){
+                let temp
+                temp = this.hold
+                this.hold = this.current
+                this.current = new temp.constructor([1, 4])
+                this.generatePiece()
+            } else{
+                this.hold = this.current
+                if (this.currentBag.length === 0 && this.next[0] === undefined) {
+                    this.currentBag = this.randomBag()
+                    this.current = this.currentBag.shift()
+                    this.next = this.currentBag.splice(0, 3)
+                } else {
+                    this.current = this.next.shift()
+                    this.next.push(this.currentBag.shift())
+                }
+                this.generatePiece()
+            }
+        }
     }
 
     randomBag(){
@@ -49,24 +87,54 @@ class Game{
     }
 
     chooseNextPiece(){
-        if(this.currentBag.length === 0 && this.next[0] === undefined){
+        this.current = null
+        this.lines += this.didClear()
+        if(this.lines >= this.gravTable[this.level-1]){
+            this.level + 1;
+            this.gravity = this.gravCurve.shift();
+            this.gravTable.shift()
+            clearInterval(this.gravInterval)
+            this.updateGravity(this.gravity)
+        }
+        if(this.currentBag.length === 0){
             this.currentBag = this.randomBag()
-            this.current = this.currentBag.shift()
-            this.next = this.currentBag.splice(0, 3)
+            this.current = this.next.shift()
+            this.next.push(this.currentBag.shift())
         }else{
             this.current = this.next.shift()
             this.next.push(this.currentBag.shift())
         }
+        this.hasHeld = false
         this.generatePiece()
     }
 
     start(){
         this.generatePiece(this.current)
         this.updateGravity(this.gravity)
+        this.playing = true
+    }
+
+    gameOver(){
+        clearInterval(this.gravInterval);
+        this.current = null;
+        this.playing = false
+        this.level = 1
     }
 
     generatePiece(){
-        this.grid.updatePiece(this.current)
+        let over = false
+        this.current.blocks.forEach(block => {
+            if(this.grid.blockOccupied(block.pos)){
+                over = true
+            }
+        })
+        if(over){
+            this.grid.updatePiece(this.current)
+            this.gameOver();
+        }
+        else{
+            this.grid.updatePiece(this.current)
+        }
     }
 
     moveActivePiece(dir){
@@ -79,6 +147,45 @@ class Game{
         if (!isOccupied) {
             this.grid.move(this.current, dir)
         }
+    }
+
+    didClear(){
+        let count = 0
+        this.grid.board.forEach((row, idx) => {
+            if(!row.includes(null)){
+                count += 1
+                row.forEach(block => {
+                    this.grid.board[block.pos[0]][block.pos[1]] = null
+                })
+                if (count > 0) {
+                    for (let i = idx - 1; i >= 0; i--) {
+                        this.grid.board[i].forEach(block => {
+                            if (block) {
+                                this.dropStep(block)
+                            }
+                        })
+                    }
+                }
+            }
+        })
+        switch(count){
+            case 1:
+                this.score += 100
+            case 2:
+                this.score += 300
+            case 3:
+                this.score += 500
+            case 4:
+                this.score += 800
+            default:
+                this.score += 0
+        }
+        return count;
+    }
+
+    dropStep(block){
+        this.grid.board[block.pos[0]][block.pos[1]] = null
+        block.updatePos([block.pos[0] + 1, block.pos[1]], this.grid)
     }
 
     rotateActivePiece(dir){
