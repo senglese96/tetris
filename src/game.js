@@ -90,9 +90,8 @@ class Game{
         this.current = null
         this.lines += this.didClear()
         if(this.lines >= this.gravTable[this.level-1]){
-            this.level + 1;
+            this.level += 1;
             this.gravity = this.gravCurve.shift();
-            this.gravTable.shift()
             clearInterval(this.gravInterval)
             this.updateGravity(this.gravity)
         }
@@ -112,6 +111,22 @@ class Game{
         this.generatePiece(this.current)
         this.updateGravity(this.gravity)
         this.playing = true
+    }
+
+    newStart(){
+        this.grid = new Grid;
+        this.currentBag = this.randomBag()
+        this.current = this.currentBag.shift()
+        this.next = this.currentBag.splice(0, 3)
+        this.score = 0;
+        this.lines = 0
+        this.gravInterval
+        this.gravCurve = [750, 500, 250, 150, 100, 80, 65, 50, 40]
+        this.gravTable = [25, 50, 75, 100, 150, 200, 250, 300]
+        this.level = 1
+        this.gravity = this.gravCurve.shift()
+        this.playing = false
+        this.hold = null
     }
 
     gameOver(){
@@ -170,13 +185,17 @@ class Game{
         })
         switch(count){
             case 1:
-                this.score += 100
+                this.score += 100 * this.level
+                break
             case 2:
-                this.score += 300
+                this.score += 300 * this.level
+                break
             case 3:
-                this.score += 500
+                this.score += 500 * this.level
+                break
             case 4:
-                this.score += 800
+                this.score += 800 * this.level
+                break
             default:
                 this.score += 0
         }

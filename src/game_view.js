@@ -17,11 +17,14 @@ class GameView{
     start(){
         this.h_ctx.fillStyle = 'black'
         this.h_ctx.fillRect(0, 0, 200, 200)
-        this.setKeyMap()
+        if(!this.keymapSet){
+            this.setKeyMap()
+        }
         this.game.start()
     }
 
     setKeyMap(){
+        this.keymapSet = true
         key('right', () => this.game.moveActivePiece([0, 1]))
         key('left', () => this.game.moveActivePiece([0, -1]))
         const speedUp = throttled((e) => {
@@ -66,9 +69,12 @@ class GameView{
         this.h_ctx.fillRect(0, 0, 200, 200)
         if(this.game.hold){
             let newHold
-            if (this.game.hold.constructor.name === "O" || this.game.hold.constructor.name === "I"){
+            if (this.game.hold.constructor.name === "O"){
                 newHold = new this.game.hold.constructor([2, 1.5])
-            } else{
+            } else if (this.game.hold.constructor.name === "I"){
+                newHold = new this.game.hold.constructor([1.5, 1.5])
+            } 
+            else{
                 newHold = new this.game.hold.constructor([2, 2])
             }
             newHold.blocks.forEach(block => {
@@ -100,9 +106,9 @@ class GameView{
         this.s_ctx.fillRect(0, 0, 600, 600)
         this.s_ctx.font = '24px Times New Roman'
         this.s_ctx.fillStyle = 'white'
-        this.s_ctx.fillText(`score: ${this.game.score}`, 20, 75, 180)
-        this.s_ctx.fillText(`lines: ${this.game.lines}`, 20, 150, 180)
-        this.s_ctx.fillText(`level: ${this.game.level}`, 20, 225, 180)
+        this.s_ctx.fillText(`score: ${this.game.score}`, 20, 60, 180)
+        this.s_ctx.fillText(`lines: ${this.game.lines}`, 20, 140, 180)
+        this.s_ctx.fillText(`level: ${this.game.level}`, 20, 220, 180)
     }
 
     drawGrid(){

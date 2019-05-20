@@ -13,7 +13,7 @@
     border: 2px inset gray;
 }
 
-#start-modal-background{
+.modal{
     width: inherit;
     height: inherit;
     background-color: rgba(255, 255, 255, 0.747);
@@ -30,6 +30,31 @@
     display: block;
     width: 30%;
     height: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
+#start-button{
+    height: 50px;
+    width: 180px;
+    background-image: linear-gradient(to bottom right, red, red, white);
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 12px;
+    position: relative;
+    bottom: 30px;
+    transition-duration: 0.2s;
+    font-size: 24px;
+}
+
+#start-button:hover{
+    cursor: pointer;
+    border: 2px inset gray;
+    transition-duration: 0.2s;
 }
 
 #hold-canvas{
@@ -54,4 +79,69 @@
     right: -380px;
     border-radius: 5px;
     border: 2px inset gray;
+}
+
+#instructions{
+    background-color: black;
+    height: 400px;
+    width: 200px;
+    position: relative;
+    top: -812px;
+    right: -100px;
+    border-radius: 5px;
+    border: 2px inset gray;
+}
+
+#instructions h1{
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+li{
+    color: white;
+    margin: 10px;
+    line-height: 1.5;
+}
+
+#restart-modal-background{
+    display: none;
+}
+
+.restart-modal-content{
+    position: relative;
+    background-color: #000000b4;
+    margin: 20% auto;
+    padding: 0;
+    color: white;
+    display: block;
+    width: 30%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
+#restart-button{
+    height: 50px;
+    width: 180px;
+    background-image: linear-gradient(to bottom right, blue, blue, white);
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 12px;
+    position: relative;
+    bottom: 30px;
+    transition-duration: 0.2s;
+    font-size: 24px;
+}
+
+#restart-button:hover{
+    cursor: pointer;
+    border: 2px inset gray;
+    transition-duration: 0.2s;
 }

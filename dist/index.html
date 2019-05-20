@@ -11,16 +11,33 @@
 </head>
 <body>
     <div class='game-container'>
-        <div id="start-modal-background">
+        <div id="start-modal-background" class='modal'>
             <div class='start-modal-content'>
                 <span>Welcome to Tetris!</span>
                 <div id='start-button'>Start Playing!</div>
+            </div>
+        </div>
+        <div id="restart-modal-background" class='modal'>
+            <div class='restart-modal-content'>
+                <span>Game Over!</span>
+                <div id='restart-button'>Play Again?</div>
             </div>
         </div>
         <canvas id="game-canvas" width="400px" height="800px" ></canvas>
         <canvas id="hold-canvas" width="200px" height="160px"></canvas>
         <canvas id='next-canvas' width="200px" height="400px"></canvas>
         <canvas id='score-canvas' width='200px' height='280px'></canvas>
+        <div id="instructions">
+            <h1>Instructions</h1>
+            <ul>
+                <li>right/left arrows = Move Left and Right</li>
+                <li>down arrow = Fast Drop</li>
+                <li>z = Rotate Counterclockwise</li>
+                <li>x = Rotate Clockwise</li>
+                <li>c = Hold Current Piece</li>
+                <li>spacebar = Instant Drop</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
