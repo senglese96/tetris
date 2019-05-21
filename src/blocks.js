@@ -10,19 +10,32 @@ export class Block{
     }
 
     drawBlock(ctx) {
-        let newPos = [this.pos[0] * 40, this.pos[1] * 40];
-        let grad = ctx.createLinearGradient(newPos[1], newPos[0], newPos[1] + 40, newPos[0] + 40);
+        let newPos = [this.pos[0] * 32, this.pos[1] * 32];
+        let grad = ctx.createLinearGradient(newPos[1], newPos[0], newPos[1] + 32, newPos[0] + 32);
         grad.addColorStop(0, this.color);
         grad.addColorStop(0.35, this.color);
         grad.addColorStop(1, 'rgba(255,255,255,1)');
 
         ctx.fillStyle = grad;
-        ctx.fillRect(newPos[1], newPos[0], 40, 40)
+        ctx.fillRect(newPos[1], newPos[0], 32, 32)
+    }
+
+    drawGhost(ctx){
+        let newPos = [this.pos[0] * 32, this.pos[1] * 32];
+        ctx.beginPath();
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = '2'
+        ctx.rect(newPos[1]+1, newPos[0]+1, 30, 30)
+        ctx.stroke();
+    }
+
+    moveGhost(){
+        this.pos = [this.pos[0] + 1, this.pos[1]];
     }
 
     eraseBlock(ctx){
-        let newPos = [this.pos[0] * 40, this.pos[1] * 40];
-        ctx.clearRect(newPos[1], newPos[0], 40, 40)
+        let newPos = [this.pos[0] * 32, this.pos[1] * 32];
+        ctx.clearRect(newPos[1], newPos[0], 32, 32)
     }
 }
 

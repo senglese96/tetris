@@ -52,6 +52,11 @@ class GameView{
 
     update(){
         this.drawGrid()
+        if(this.game.current){
+            this.game.ghostPiece().blocks.forEach(block => {
+                block.drawGhost(this.ctx);
+            })
+        }
         this.game.grid.board.forEach(row => {
             row.forEach(block => {
                 if(block){
@@ -104,25 +109,26 @@ class GameView{
     updateScore(){
         this.s_ctx.fillStyle = 'black'
         this.s_ctx.fillRect(0, 0, 600, 600)
-        this.s_ctx.font = '24px Times New Roman'
+        this.s_ctx.font = '20px Times New Roman'
         this.s_ctx.fillStyle = 'white'
-        this.s_ctx.fillText(`score: ${this.game.score}`, 20, 60, 180)
-        this.s_ctx.fillText(`lines: ${this.game.lines}`, 20, 140, 180)
-        this.s_ctx.fillText(`level: ${this.game.level}`, 20, 220, 180)
+        this.s_ctx.fillText(`score: ${this.game.score}`, 20, 56, 140)
+        this.s_ctx.fillText(`lines: ${this.game.lines}`, 20, 112, 180)
+        this.s_ctx.fillText(`level: ${this.game.level}`, 20, 168, 180)
     }
 
     drawGrid(){
         this.ctx.fillStyle = "black"
         this.ctx.fillRect(0, 0, 500, 800)
-        for(let i = 40; i <= 400; i += 40){
+        for(let i = 32; i <= 320; i += 32){
             this.ctx.strokeStyle = "gray"
+            this.ctx.lineWidth = '1'
             this.ctx.beginPath()
             this.ctx.moveTo(i, 0);
             this.ctx.lineTo(i, 800);
             this.ctx.stroke();
         }
 
-        for(let j = 40; j <= 800; j += 40){
+        for(let j = 32; j <= 640; j += 32){
             this.ctx.strokeStyle = "gray"
             this.ctx.beginPath()
             this.ctx.moveTo(0, j);
