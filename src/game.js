@@ -122,7 +122,7 @@ class Game{
         this.lines = 0
         this.gravInterval
         this.gravCurve = [750, 500, 250, 150, 100, 80, 65, 50, 40]
-        this.gravTable = [25, 50, 75, 100, 150, 200, 250, 300]
+        this.gravTable = [15, 30, 45, 60, 75, 100, 125, 150]
         this.level = 1
         this.gravity = this.gravCurve.shift()
         this.playing = false
