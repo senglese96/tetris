@@ -46,7 +46,6 @@ class Grid{
             this.board[pos[0]][pos[1]] === undefined) {
             return true
         } else if (this.board[pos[0]][pos[1]] !== null){
-            debugger
             return true
         }
         return false
