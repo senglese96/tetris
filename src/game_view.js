@@ -27,18 +27,22 @@ class GameView{
         this.keymapSet = true
         key('right', () => this.game.moveActivePiece([0, 1]))
         key('left', () => this.game.moveActivePiece([0, -1]))
+        let game_view = this;
+        let speed = false;
         const speedUp = throttled((e) => {
-            if (e.keyCode === 40 && this.game.gravity > 100) {
+            if (e.keyCode === 40 && speed === false && this.game.gravity > 100) {
                 clearInterval(this.game.gravInterval);
                 this.game.updateGravity(100)
+                speed = true
             }
-        }, 250)
+        }, 350)
         const slowDown = throttled(e => {
-            if (e.keyCode === 40 && this.game.gravity > 100) {
+            if (e.keyCode === 40 && this.game.gravity > 100 && speed === true) {
                 clearInterval(this.game.gravInterval);
-                this.game.updateGravity(this.game.gravity)
+                this.game.updateGravity(this.game.gravity);
+                speed = false
             }
-        }, 250)
+        }, 350)
         const fastDrop = throttled(e => {
             this.game.fastDrop()
         }, 250)
