@@ -152,6 +152,29 @@ class Game{
         }
     }
 
+    ghostPiece(){
+        let isOccupied = false
+        const ghost = new this.current.constructor([0,0])
+        for(let i = 0; i < 4; i++){
+            ghost.blocks[i].pos[0] = this.current.blocks[i].pos[0]
+            ghost.blocks[i].pos[1] = this.current.blocks[i].pos[1]
+        }
+        ghost.blocks.forEach(block => {
+            if (this.grid.occupied([block.pos[0] + 1, block.pos[1]], ghost)) {
+                isOccupied = true
+            }
+        })
+        while(!isOccupied){
+            ghost.blocks.forEach(block => {
+                block.moveGhost();
+                if (this.grid.occupied([block.pos[0] + 1, block.pos[1]], ghost)) {
+                    isOccupied = true
+                }
+            })
+        }
+        return ghost
+    }
+
     moveActivePiece(dir){
         let isOccupied = false;
         this.current.blocks.forEach(block => {
