@@ -51,6 +51,7 @@ class GameView{
         document.addEventListener('keyup', slowDown)
         key('x', () => this.game.rotateActivePiece(1))
         key('z', () => this.game.rotateActivePiece(-1))
+        key('up', () => this.game.rotateActivePiece(1))
         key('c', () => this.game.holdPiece());
         key('space', fastDrop)
     }
