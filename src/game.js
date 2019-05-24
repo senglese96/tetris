@@ -11,8 +11,8 @@ class Game{
         this.score = 0;
         this.lines = 0
         this.gravInterval
-        this.gravCurve = [750, 600, 500, 400, 325, 250, 200, 160, 140]
-        this.gravTable = [15, 30, 45, 60, 75, 100, 125, 150]
+        this.gravCurve = [750, 600, 450, 350, 275, 225, 175, 140, 110, 90, 75]
+        this.gravTable = [15, 30, 45, 60, 75, 100, 125, 150, 175, 200]
         this.level = 1
         this.gravity = this.gravCurve.shift()
         this.playing = false
@@ -59,9 +59,9 @@ class Game{
                 this.generatePiece()
             } else{
                 this.hold = this.current
-                if (this.currentBag.length === 0 && this.next[0] === undefined) {
+                if (this.currentBag.length === 0) {
                     this.currentBag = this.randomBag()
-                    this.current = this.currentBag.shift()
+                    this.current = this.next.shift()
                     this.next = this.currentBag.splice(0, 3)
                 } else {
                     this.current = this.next.shift()
