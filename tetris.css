@@ -26,7 +26,7 @@
     background-color: #000000b4;
     margin: 20% auto;
     padding: 0;
-    color: white;
+    color: white;github
     display: block;
     width: 30%;
     height: 35%;
@@ -85,10 +85,10 @@
 
 #instructions{
     background-color: black;
-    height: 360px;
+    height: 400px;
     width: 160px;
     position: relative;
-    top: -692px;
+    top: -732px;
     right: -80px;
     border-radius: 5px;
     border: 2px inset gray;
@@ -148,4 +148,20 @@ li{
     cursor: pointer;
     border: 2px inset gray;
     transition-duration: 0.2s;
+}
+
+#links{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#links a{
+    color: white;
+    opacity: 0.4;
+    transition: opacity 0.2s ease-in;
+}
+
+#links a:hover{
+    opacity: 0.75;
 }
