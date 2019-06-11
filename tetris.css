@@ -26,7 +26,7 @@
     background-color: #000000b4;
     margin: 20% auto;
     padding: 0;
-    color: white;github
+    color: white;
     display: block;
     width: 30%;
     height: 35%;
@@ -34,7 +34,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    font-size: 30px;
+    font-size: 28px;
     border-radius: 5px;
 
 }
@@ -62,7 +62,7 @@
 #hold-canvas{
     position: relative;
     left: 80px;
-    top: -835px;
+    top: -803px;
     border-radius: 5px;
     border: 2px inset gray;
 }
@@ -107,6 +107,10 @@ li{
     margin: 8px;
     line-height: 1.3;
     font-size: 16px;
+}
+li span{
+    font-style: italic;
+    font-size: 14px;
 }
 
 #restart-modal-background{

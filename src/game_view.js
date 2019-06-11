@@ -78,15 +78,18 @@ class GameView{
     updateHold(){
         this.h_ctx.fillStyle = 'black'
         this.h_ctx.fillRect(0, 0, 200, 200)
+        this.h_ctx.font = "28px Arial"
+        this.h_ctx.fillStyle = 'white'
+        this.h_ctx.fillText(`Hold`, 50, 40, 140)
         if(this.game.hold){
             let newHold
             if (this.game.hold.constructor.name === "O"){
-                newHold = new this.game.hold.constructor([2, 1.5])
+                newHold = new this.game.hold.constructor([3, 1.5])
             } else if (this.game.hold.constructor.name === "I"){
-                newHold = new this.game.hold.constructor([1.5, 1.5])
+                newHold = new this.game.hold.constructor([2.5, 1.5])
             } 
             else{
-                newHold = new this.game.hold.constructor([2, 2])
+                newHold = new this.game.hold.constructor([3, 2])
             }
             newHold.blocks.forEach(block => {
                 block.drawBlock(this.h_ctx)
@@ -115,7 +118,7 @@ class GameView{
     updateScore(){
         this.s_ctx.fillStyle = 'black'
         this.s_ctx.fillRect(0, 0, 600, 600)
-        this.s_ctx.font = '20px Times New Roman'
+        this.s_ctx.font = '20px Arial'
         this.s_ctx.fillStyle = 'white'
         this.s_ctx.fillText(`score: ${this.game.score}`, 20, 56, 140)
         this.s_ctx.fillText(`lines: ${this.game.lines}`, 20, 112, 180)
