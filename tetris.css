@@ -1,7 +1,7 @@
 .game-container{
     height: 680px;
     width: 880px;
-    margin: 20px auto;
+    margin: 15vh auto;
     overflow: hidden;
 }
 
@@ -168,4 +168,8 @@ li span{
 
 #links a:hover{
     opacity: 0.75;
+}
+
+html{
+    background-color: #BBBBBB;
 }
