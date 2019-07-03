@@ -1,7 +1,10 @@
 .game-container{
+    position: absolute;
     height: 680px;
     width: 880px;
-    margin: 15vh auto;
+    left: 50%;
+    top: 50%;
+    margin: -340px 0 0 -440px;
     overflow: hidden;
 }
 
@@ -30,8 +33,8 @@
     padding: 0;
     color: white;
     display: block;
-    width: 15%;
-    height: 30%;
+    width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
