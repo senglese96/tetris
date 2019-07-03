@@ -129,8 +129,8 @@ li span{
     padding: 0;
     color: white;
     display: block;
-    width: 30%;
-    height: 35%;
+    width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
