@@ -11,19 +11,19 @@
     <title>Tetris</title>
 </head>
 <body>
+    <div id="start-modal-background" class='modal'>
+        <div class='start-modal-content'>
+            <span>Welcome to Tetris!</span>
+            <div id='start-button'>Start Playing!</div>
+        </div>
+    </div>
+    <div id="restart-modal-background" class='modal'>
+        <div class='restart-modal-content'>
+            <span>Game Over!</span>
+            <div id='restart-button'>Play Again?</div>
+        </div>
+    </div>
     <div class='game-container'>
-        <div id="start-modal-background" class='modal'>
-            <div class='start-modal-content'>
-                <span>Welcome to Tetris!</span>
-                <div id='start-button'>Start Playing!</div>
-            </div>
-        </div>
-        <div id="restart-modal-background" class='modal'>
-            <div class='restart-modal-content'>
-                <span>Game Over!</span>
-                <div id='restart-button'>Play Again?</div>
-            </div>
-        </div>
         <canvas id="game-canvas" width="320px" height="640px" ></canvas>
         <canvas id="hold-canvas" width="160px" height="160px"></canvas>
         <canvas id='next-canvas' width="160px" height="320px"></canvas>
